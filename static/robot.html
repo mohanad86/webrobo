@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="/app.js"></script>
+    <title>Robot Controls</title>
+
+
+  </head>
+  <body>       
+	<h1>My controls</h1>
+	<ul>
+	    <button onClick = "$.get('/left');">GO Left</button>
+	    <button onClick = "$.get('/right');">GO right</button>
+	    <button onClick = "$.get('/stop');">Stop</button>
+	    <button onClick = "$.get('/go');">GO </button>
+  	  	<li><a href= "/left" >Go left</a></li>
+  	  	<li><a href= "/right" >Go right</a></li>
+  	  	<li><a href= "/stop" >Stop</a></li>
+  	  	  	  	<li><a href= "/go" >Go</a></li>
+	</ul>
+  </body>
+</html>
