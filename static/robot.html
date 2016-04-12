@@ -4,21 +4,42 @@
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <meta charset="utf-8"/>
     <script type="text/javascript" src="/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="css.css"/>
     <title>Robot Controls</title>
 
 
   </head>
   <body>       
-	<h1>My controls</h1>
+	<h1>For Mobile Controls</h1>
 	<ul>
-	    <button onClick = "$.get('/left');">GO Left</button>
-	    <button onClick = "$.get('/right');">GO right</button>
-	    <button onClick = "$.get('/stop');">Stop</button>
-	    <button onClick = "$.get('/go');">GO </button>
-  	  	<li><a href= "/left" >Go left</a></li>
-  	  	<li><a href= "/right" >Go right</a></li>
-  	  	<li><a href= "/stop" >Stop</a></li>
-  	  	  	  	<li><a href= "/go" >Go</a></li>
+	    <br>
+        <button ontouchstart = "$.get('/left');", onmousedown = "$.get('/stop');">Go Left</button>
+	    <br>
+	    <br>
+	    <button ontouchstart = "$.get('/right');" onmouseup="$.get('/stop');">Go Right</button>
+	    <br>
+	    <br>
+	    <button ontouchstart = "$.get('/go');" onmouseup="$.get('/stop');">GO</button>
+	    <br>
+	    <br>
+	    <button ontouchstart = "$.get('/back');" onmouseup="$.get('/stop');">Back</button>
+	    <br>
+	    <br>
+	    <h1> For computer Controls</h1>
+	    <button onmousedown = "$.get('/left');" onmouseup="$.get('/stop');">GO Left</button>
+	    <br>
+	    <button onmousedown = "$.get('/right');" onmouseup="$.get('/stop');">GO Right</button>
+	    <br>
+	    <button onmousedown = "$.get('/stop');" >Stop</button>
+	    <br>
+	    <button onmousedown = "$.get('/go');" onmouseup="$.get('/stop');">GO </button>
+	    <br>
+	    <button onmousedown = "$.get('/back');" onmouseup="$.get('/stop');">Back</button>
+	    <br>
+	    <button onClick = "$.get('distance');" >Distance</button> 
+	    <br>
+	    
 	</ul>
+	
   </body>
 </html>
