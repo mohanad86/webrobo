@@ -8,7 +8,7 @@ user-select: none;
 }
 
 button {
-    background-color: white;
+    background-color: red;
     color: green;
     padding: 10px;
     border-radius: 10px;
@@ -24,6 +24,6 @@ button {
 }
 
 button {
-    height: 7em;
+    height: 5em;
 }
 
