@@ -25,18 +25,31 @@ class MotorThread(Thread):
                 sleep(0.018 if self.speed > 0 else 0.019)
             else:
                 sleep(0.020)
+
 def distance(self):
-    value = os.path.join(6)
+    self.path = "/sys/class/gpio/gpio%d" % pin
+    value = os.path.join(198)
     distance = 6762 / (value -9) -5
     textedit.append("{:06.2f}".format(distance))
     print (distance)
-    print("distance", os.path.join(1))
+    print("distance", os.path.join(198))
 left = MotorThread(192)
 left.start()
 
+import json
+
 r2 = MotorThread(195)
 r2.start()
-app = Flask(__name__)
+app = Flask(__name__ )
+ 
+@app.route("/batterycharge")
+def battery():
+    stats = {}
+    for filename in os.listdir("/sys/power/axp_pmu/battery/"):
+        with open ("/sys/power/axp_pmu/battery/" + filename) as fh:
+            stats[filename] = int(fh.read())
+    return json.dumps(stats)
+
 @app.route("/css.css")
 def css():
     return app.send_static_file('css.css')
@@ -76,4 +89,4 @@ def back():
 
  
 if __name__ == '__main__':
-    app.run(host = "0.0.0.0")
+    app.run(host = "0.0.0.0", debug = True)
