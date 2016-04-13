@@ -35,8 +35,20 @@ function isMobile() {
 window.addEventListener('load', removeMobileOnclick);
 
 $('button').bind('touchstart', function(){
-    $(this).addClass('select');
+    $(this).addClass('button');
 }).bind('touchend', function(){
-    $(this).removeClass('select');
+    $(this).removeClass('button');
 });
 
+$('button').click(function () {
+  $(this).css('button', '1px solid blue');
+  $('button#red').css('button', '1px solid white');
+});
+
+setInterval(function(){ 
+    $.getJSON('/batterycharge', function(data) {
+        console.info(data);
+        $("#batterystats").text(data.power/1000000 + "watts");
+    });
+    }, 3000);
+ 
