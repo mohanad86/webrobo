@@ -1,45 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!--when you want to requst the file from the internet use this>
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script-->
+  <script src ="/static/jquery-1.12.3.min.js"></script>
+  
     <meta charset="utf-8"/>
     <script type="text/javascript" src="/app.js"></script>
     <link type="text/css" rel="stylesheet" href="css.css"/>
     <title>Robot Controls</title>
 
 
-  </head>
-  <body>       
-	<h1>For Mobile Controls</h1>
-	<ul>
-	    <br>
+  <body>     
+    <div id="batterystats"></div>
+     <div id="voltage"></div>
+     <div id = "rightsensor"></div>
+     <div id = "leftsensor"></div>
+    <select id="batterystats">
+     <option> Power </option>
+  <option>Capacity </option>
+  <option>Charge</option>
+  <option>Connected</option>
+  <option>Charging</option>
+    </select>
+
+	<h1>Mobile Controls</h1>
         <button ontouchstart = "$.get('/left');" ontouchend = "$.get('/stop');">Go Left</button>
-	    <br>
-	    <br>
-	    <button ontouchstart = "$.get('/right');" ontouchend = "$.get('/stop');">Go Right</button>
-	    <br>
-	    <br>
-	    <button ontouchstart = "$.get('/go');" ontouchend ="$.get('/stop');">GO</button>
-	    <br>
-	    <br>
+	   <button ontouchstart = "$.get('/right');" ontouchend = "$.get('/stop');">Go Right</button> 
+	    <button ontouchstart = "$.get('/go');" ontouchend ="$.get('/stop');">GO</button> 
 	    <button ontouchstart = "$.get('/back');" ontouchend ="$.get('/stop');">Back</button>
-	    <br>
-	    <br>
-	    <h1> For computer Controls</h1>
-	    <button onmousedown = "$.get('/left');" onmouseup="$.get('/stop');">GO Left</button>
-	    <br>
-	    <button onmousedown = "$.get('/right');" onmouseup="$.get('/stop');">GO Right</button>
-	    <br>
-	    <button onmousedown = "$.get('/stop');" >Stop</button>
-	    <br>
-	    <button onmousedown = "$.get('/go');" onmouseup="$.get('/stop');">GO </button>
-	    <br>
+	    	    <h1>Computer Controls</h1>
+                <button onmousedown = "$.get('/go');" onmouseup="$.get('/stop');">GO </button> 
+                        <button onmousedown = "$.get('/left');" onmouseup="$.get('/stop');">GO Left</button> 
+	 <button onmousedown = "$.get('/right');" onmouseup="$.get('/stop');">GO Right</button>
+	   <!--button onmousedown = "$.get('/stop');" >Stop</button-->
 	    <button onmousedown = "$.get('/back');" onmouseup="$.get('/stop');">Back</button>
-	    <br>
-	    <button onClick = "$.get('distance');" >Distance</button> 
-	    <br>
-	    
-	</ul>
-	
-  </body>
-</html>
+	     <!--button onClick = "$.get('/left');">GO Left</button--> 
