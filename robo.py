@@ -2,6 +2,16 @@ import os
 from time import sleep
 from threading import Thread
 from flask import Flask, render_template
+
+for pin  in range(192,196):
+    try:
+        with open("/sys/class/gpio/export", "w") as fh:
+            fh.write(str(pin))
+    except IOError:
+        pass
+    with open("/sys/class/gpio/gpio%d/direction" % pin, "w") as fh:
+        fh.write("in")
+
 class MotorThread(Thread):
     def __init__(self, pin=192):
         Thread.__init__(self)
@@ -33,12 +43,12 @@ def distance(self):
     textedit.append("{:06.2f}".format(distance))
     print (distance)
     print("distance", os.path.join(198))
-left = MotorThread(192)
+left = MotorThread(202)
 left.start()
 
 import json
 
-r2 = MotorThread(195)
+r2 = MotorThread(196)
 r2.start()
 app = Flask(__name__ )
  
@@ -48,8 +58,19 @@ def battery():
     for filename in os.listdir("/sys/power/axp_pmu/battery/"):
         with open ("/sys/power/axp_pmu/battery/" + filename) as fh:
             stats[filename] = int(fh.read())
-    return json.dumps(stats)
+            
+    with open("/sys/class/gpio/gpio192/value", "r") as fh:
+        stats["enemy_left"] = int(fh.read())
+    with open("/sys/class/gpio/gpio193/value", "r") as fh:
+        stats["line_left"] = int(fh.read())
+    with open("/sys/class/gpio/gpio194/value", "r") as fh:
+        stats["line_right"] = int(fh.read())
+    with open("/sys/class/gpio/gpio195/value", "r") as fh:
+        stats["enemy_right"] = int(fh.read())
 
+
+    return json.dumps(stats)
+    
 @app.route("/css.css")
 def css():
     return app.send_static_file('css.css')
@@ -89,4 +110,4 @@ def back():
 
  
 if __name__ == '__main__':
-    app.run(host = "0.0.0.0", debug = True)
+    app.run(host = "0.0.0.0", debug = True, threaded = True)
