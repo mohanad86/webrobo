@@ -1,8 +1,8 @@
 import os
 from time import sleep
 from threading import Thread
-from flask import Flask, render_template
-
+from flask import Flask, render_template, Response
+import cv2
 for pin  in range(192,196):
     try:
         with open("/sys/class/gpio/export", "w") as fh:
@@ -45,13 +45,22 @@ def distance(self):
     print("distance", os.path.join(198))
 left = MotorThread(202)
 left.start()
-
 import json
-
 r2 = MotorThread(196)
 r2.start()
 app = Flask(__name__ )
- 
+@app.route('/camera')
+def index():
+    cap = cv2.VideoCapture(0)
+    cap.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH,320);
+    cap.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT,240);
+    def camera():
+        while True:
+            rval, frame = cap.read()
+            ret, jpeg = cv2.imencode('.jpg', frame, (cv2.IMWRITE_JPEG_QUALITY, 20))
+            yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n' 
+    return Response(camera(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
 @app.route("/batterycharge")
 def battery():
     stats = {}
