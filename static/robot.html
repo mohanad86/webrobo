@@ -9,12 +9,29 @@
     <script type="text/javascript" src="/app.js"></script>
     <link type="text/css" rel="stylesheet" href="css.css"/>
     <title>Robot Controls</title>
-
-
-  <body>
     
-      <img src="/camera" height="30" width="30">     
-    <div id="batterystats"></div>
+
+	<h1>My Robot</h1>
+	<div id="button">
+	<img src="/camera" height="320" width="600"> 
+        <button id="left" ontouchstart = "$.get('/left');" ontouchend = "$.get('/stop');">Go Left</button>
+	   <button id ="right" ontouchstart = "$.get('/right');" ontouchend = "$.get('/stop');">Go Right</button> 
+	    <button id = "go" ontouchstart = "$.get('/go');" ontouchend ="$.get('/stop');">GO</button> 
+	    <button id ="back" ontouchstart = "$.get('/back');" ontouchend ="$.get('/stop');">Back</button>
+	    </div>
+
+
+   
+	    <!--
+	    	    <h2> Computer Controls</h2>
+                <button id = "computergo" onmousedown = "$.get('/go');" onmouseup="$.get('/stop');">GO </button> 
+                <button id= "computerleft" onmousedown = "$.get('/left');" onmouseup="$.get('/stop');">GO Left</button> 
+	            <button id = "computerright"  onmousedown = "$.get('/right');" onmouseup="$.get('/stop');">GO Right</button>
+	            <button id = "computerback" onmousedown = "$.get('/back');" onmouseup="$.get('/stop');">Back</button>      
+	     <!--button onClick = "$.get('/left');">GO Left</button-->
+	     <!--button onmousedown = "$.get('/stop');" >Stop</button--> 
+	 <!--
+	  <div id="batterystats"></div>
      <div id="voltage"></div>
      <div id = "rightsensor"></div>
      <div id = "leftsensor"></div>
@@ -25,16 +42,3 @@
   <option>Connected</option>
   <option>Charging</option>
     </select>
-
-	<h1>Mobile Controls</h1>
-        <button ontouchstart = "$.get('/left');" ontouchend = "$.get('/stop');">Go Left</button>
-	   <button ontouchstart = "$.get('/right');" ontouchend = "$.get('/stop');">Go Right</button> 
-	    <button ontouchstart = "$.get('/go');" ontouchend ="$.get('/stop');">GO</button> 
-	    <button ontouchstart = "$.get('/back');" ontouchend ="$.get('/stop');">Back</button>
-	    	    <h1>Computer Controls</h1>
-                <button onmousedown = "$.get('/go');" onmouseup="$.get('/stop');">GO </button> 
-                        <button onmousedown = "$.get('/left');" onmouseup="$.get('/stop');">GO Left</button> 
-	 <button onmousedown = "$.get('/right');" onmouseup="$.get('/stop');">GO Right</button>
-	   <!--button onmousedown = "$.get('/stop');" >Stop</button-->
-	    <button onmousedown = "$.get('/back');" onmouseup="$.get('/stop');">Back</button>
-	     <!--button onClick = "$.get('/left');">GO Left</button--> 
