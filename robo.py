@@ -49,11 +49,15 @@ import json
 r2 = MotorThread(196)
 r2.start()
 app = Flask(__name__ )
+
+
+
+
 @app.route('/camera')
 def index():
     cap = cv2.VideoCapture(0)
-    cap.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH,320);
-    cap.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT,240);
+    cap.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH,640);
+    cap.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT,480);
     def camera():
         while True:
             rval, frame = cap.read()
@@ -115,7 +119,8 @@ def right():
 @app.route("/back")
 def back():
     left.speed = -1
-    r2.speed = -1        
+    r2.speed = -1 
+    return "ok"       
 
  
 if __name__ == '__main__':
