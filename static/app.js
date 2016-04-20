@@ -48,10 +48,11 @@ $('button').click(function () {
 setInterval(function(){ 
     $.getJSON('/batterycharge', function(data) {
         console.info(data);
-        $("#batterystats").text(data.power/1000000 + "watts");
-        $("#voltage").text(data.voltage/1000000 + "voltage");
-        $("#rightsensor").text(data.enemy_right + "rightsensor");
-        $("#leftsensor").text(data.enemy_left + "leftsensor");
+        $("#batterystats").text(data.power/1000000 + " Watts ");
+        $("#voltage").text(data.voltage/1000000 + " Voltage ");
+        $("#rightsensor").text(data.enemy_right + " Rightsensor ");
+        $("#leftsensor").text(data.enemy_left + " Leftsensor ");
+        $("#capacity").text(data.capacity + "% of Power");
          });
     }, 3000); 
     
@@ -75,4 +76,5 @@ $.fn.extend({
 $(function() {
   $(this).disableSelection();
 });
+
    
