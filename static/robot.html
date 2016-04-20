@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <!-- disable page zooming on phones -->
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <!--when you want to requst the file from the internet use this>
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script-->
   <script src ="/static/jquery-1.12.3.min.js"></script>
-  
     <meta charset="utf-8"/>
     <script type="text/javascript" src="/app.js"></script>
     <link type="text/css" rel="stylesheet" href="css.css"/>
     <title>Robot Controls</title>
-    
-
+    </head>
+ <body>
 	<h1>My Robot</h1>
 	<div id="button">
-	<img src="/camera" height="320" width="600"> 
+	<img src="http://192.168.12.5:8080/?action=stream" height="320" width="600"> 
         <button id="left" ontouchstart = "$.get('/left');" ontouchend = "$.get('/stop');">Go Left</button>
 	   <button id ="right" ontouchstart = "$.get('/right');" ontouchend = "$.get('/stop');">Go Right</button> 
 	    <button id = "go" ontouchstart = "$.get('/go');" ontouchend ="$.get('/stop');">GO</button> 
 	    <button id ="back" ontouchstart = "$.get('/back');" ontouchend ="$.get('/stop');">Back</button>
-	    </div>
-
-
+	    
+	    <table style="width:100%">
+	<th>My Robot Status</th>
+	<td><div id="batterystats"></div></td>
+        <td><div id="voltage"></div></td>
+        <td><div id = "rightsensor"></div></td>
+        <td><div id = "leftsensor"></div></td>
+        <td><div id = "capacity"></div></td>
+</table>
+        
+ 
    
 	    <!--
 	    	    <h2> Computer Controls</h2>
@@ -30,15 +39,6 @@
 	            <button id = "computerback" onmousedown = "$.get('/back');" onmouseup="$.get('/stop');">Back</button>      
 	     <!--button onClick = "$.get('/left');">GO Left</button-->
 	     <!--button onmousedown = "$.get('/stop');" >Stop</button--> 
-	 <!--
-	  <div id="batterystats"></div>
-     <div id="voltage"></div>
-     <div id = "rightsensor"></div>
-     <div id = "leftsensor"></div>
-    <select id="batterystats">
-     <option> Power </option>
-  <option>Capacity </option>
-  <option>Charge</option>
-  <option>Connected</option>
-  <option>Charging</option>
-    </select>
+	   </body>
+</html> 
+
