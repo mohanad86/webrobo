@@ -12,17 +12,15 @@ body {
     color:blue;
     font-weight: bold;
     }
-//*h2 {
-    text-align: right;
-    color:blue;*/
-    }
+
 img {
     position: absolute;
     -webkit-user-select: none;  
     -moz-user-select: none;     
     -ms-user-select: none;      
     -o-user-select: none;
-     user-select: none;    
+     user-select: none; 
+     top: 150px   
     }
 button {
     position: absolute;
@@ -51,85 +49,57 @@ button {
 }
 
 #left { 
-    left: 20px;
-    top: 220px;
+    left: 10px;
+    top: 280px;
     }
 #right {
-    left: 450px;
-    top: 220px;
+    left: 480px;
+    top: 280px;
     }
     
 #go {
-    left: 230px;
-    top: 90px;
+    left: 270px;
+    top: 160px;
     }
  
 #back {
-    left: 230px;
-    top: 340px;
+    left: 270px;
+    top: 410px;
     }
-    /*
-#computergo {
-    position: absolute;
-    top: 8px;
-    right: 150px;
-    }
-#computerleft {
-    position: absolute;
-    right: 225px;
-    top: 130px;
-    }
-    
-#computerright {
-    position: absolute;
-    right:10px;
-    top:20;
-    } 
-#computerback {
-    position: absolute;
-    bottom: 400px;
-    right: 150px;
-    }
-*/
 
 #batterystats {
     color:blue;
-        background-color:orange;
+    background-color:orange;
     }
 #voltage {
-    color: green;
-        background-color:white;
+    color: green
+    background-color:white;
     }
 #rightsensor {
-    color:yellow; 
-        background-color:black;   
+   color:yellow; 
+   background-color:black;   
     }
 #leftsensor {
     color: orange;
-        background-color:white;
+    background-color:white;
     }
 #capacity {
     color: red;
     background-color:white;
     }
   
-    
-    
-    
-    
 table, td, th {
     background-color:lightblue;    
     border: 1px solid #ddd;
     padding: 30px;
     text-align: center;
     position:left;
-    top: 40px;
     font-size: 110%;
     }
 
 table {
     border-collapse: collapse;
-    width: 100%;
+    width: 70%;
 }
 
 th, td {
@@ -137,4 +107,24 @@ th, td {
 }
 
 
+#battery {
+  border: 2px solid white;
+  background: black;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 20px;
+  padding: 2px;
+}
 
+#charge {
+  width: 70%;
+  background: white;
+  height: 100%;
+}
+
+    
+    
+    
+   
