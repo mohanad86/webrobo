@@ -53,8 +53,10 @@ setInterval(function(){
         $("#rightsensor").text(data.enemy_right + " Rightsensor ");
         $("#leftsensor").text(data.enemy_left + " Leftsensor ");
         $("#capacity").text(data.capacity + "% of Power");
-         });
-    }, 3000); 
+        $("#charge").css("width", data.capacity + "%");
+        // variable 'data' does not exist after this
+    });
+}, 3000); 
     
 var nua = navigator.userAgent;
 var is_android = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 &&     nua.indexOf('AppleWebKit') > -1) && !(nua.indexOf('Chrome') > -1));
@@ -73,8 +75,35 @@ $.fn.extend({
     }
 });
 
-$(function() {
-  $(this).disableSelection();
+
+$("html").keydown(function(e) {
+    e.preventDefault();
+    switch (e.keyCode) {
+        case 37:
+            $.get('/left');
+            console.info("Pressed left?");
+            break
+        case 39:
+			$.get("/right");
+            console.info("Pressed right");
+            break;
+        case 38:
+            $.get("/go");
+            break;
+         case 40:
+            $.get("/back");
+        default:
+        		$("#msg").html("Pressed unknown button");
+            console.info("User pressed uknown button with keycode:", e.keyCode);
+    }
+    return false;
 });
 
-   
+$("html").keyup(function(e) {
+    $.get("/stop");
+    e.preventDefault(); // Prevent page from scrolling
+    return false;
+});
+
+
+  
