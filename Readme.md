@@ -3,7 +3,6 @@
 
 - python codes 
 
-![alt text](https://github.com/mohanad86/webrobo/blob/master/images/flask.png)
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160418_192127.jpg)
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160418_192136.jpg)
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160418_192201.jpg)
