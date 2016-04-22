@@ -1,7 +1,4 @@
-# Robot control over the browser
-- Here you will find simple and complex python codes 
-
-- python codes 
+# Robot control over the browser 
 
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160418_192127.jpg)
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160418_192136.jpg)
