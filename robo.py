@@ -3,6 +3,7 @@ from time import sleep
 from threading import Thread
 from flask import Flask, render_template, Response
 import cv2
+import json
 for pin  in range(192,196):
     try:
         with open("/sys/class/gpio/export", "w") as fh:
@@ -26,7 +27,7 @@ class MotorThread(Thread):
     def run(self):
         with open(os.path.join(self.path, "value"), "w") as fh:
           while True:
-            if self.speed:                
+            if self.speed:
                 fh.write("1")
                 fh.flush()
                 sleep(0.002 if self.speed > 0 else 0.001)
@@ -36,22 +37,11 @@ class MotorThread(Thread):
             else:
                 sleep(0.020)
 
-def distance(self):
-    self.path = "/sys/class/gpio/gpio%d" % pin
-    value = os.path.join(198)
-    distance = 6762 / (value -9) -5
-    textedit.append("{:06.2f}".format(distance))
-    print (distance)
-    print("distance", os.path.join(198))
 left = MotorThread(202)
 left.start()
-import json
 r2 = MotorThread(196)
 r2.start()
 app = Flask(__name__ )
-
-
-
 
 @app.route('/camera')
 def index():
@@ -62,7 +52,7 @@ def index():
         while True:
             rval, frame = cap.read()
             ret, jpeg = cv2.imencode('.jpg', frame, (cv2.IMWRITE_JPEG_QUALITY, 20))
-            yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n' 
+            yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n'
     return Response(camera(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route("/batterycharge")
@@ -71,7 +61,7 @@ def battery():
     for filename in os.listdir("/sys/power/axp_pmu/battery/"):
         with open ("/sys/power/axp_pmu/battery/" + filename) as fh:
             stats[filename] = int(fh.read())
-            
+            #r means read
     with open("/sys/class/gpio/gpio192/value", "r") as fh:
         stats["enemy_left"] = int(fh.read())
     with open("/sys/class/gpio/gpio193/value", "r") as fh:
@@ -80,10 +70,8 @@ def battery():
         stats["line_right"] = int(fh.read())
     with open("/sys/class/gpio/gpio195/value", "r") as fh:
         stats["enemy_right"] = int(fh.read())
-
-
     return json.dumps(stats)
-    
+
 @app.route("/css.css")
 def css():
     return app.send_static_file('css.css')
@@ -104,13 +92,13 @@ def stop():
     left.speed = 0
     r2.speed = 0
     return "ok"
-    
+
 @app.route("/go")
 def go():
     left.speed = 1
     r2.speed = 1
     return "ok"
-    
+
 @app.route("/right")
 def right():
     left.speed = -1
@@ -119,9 +107,9 @@ def right():
 @app.route("/back")
 def back():
     left.speed = -1
-    r2.speed = -1 
-    return "ok"       
+    r2.speed = -1
+    return "ok"
 
- 
+
 if __name__ == '__main__':
     app.run(host = "0.0.0.0", debug = True, threaded = True)
