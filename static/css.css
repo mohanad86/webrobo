@@ -74,14 +74,15 @@ button {
 #voltage {
     color: green
     background-color:white;
+    
     }
-#rightsensor {
+#rightsensor.activated {
    color:yellow; 
-   background-color:black;   
+   background-color:red;
     }
-#leftsensor {
+#leftsensor.activated {
     color: orange;
-    background-color:white;
+    background-color:red;
     }
 #capacity {
     color: red;
@@ -124,7 +125,3 @@ th, td {
   height: 100%;
 }
 
-    
-    
-    
-   
