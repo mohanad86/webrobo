@@ -52,7 +52,7 @@ def index():
         while True:
             rval, frame = cap.read()
             ret, jpeg = cv2.imencode('.jpg', frame, (cv2.IMWRITE_JPEG_QUALITY, 20))
-            yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n'
+            yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n' 
     return Response(camera(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route("/batterycharge")
