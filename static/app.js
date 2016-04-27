@@ -47,12 +47,13 @@ $('button').click(function () {
 //calling the function of the battery status
 setInterval(function(){ 
     $.getJSON('/batterycharge', function(data) {
-        console.info(data);
         $("#batterystats").text(data.power/1000000 + " Watts ");
         $("#voltage").text(data.voltage/1000000 + " Voltage ");
         $("#rightsensor").text(data.enemy_right + " Rightsensor ");
+        $("#rightsensor").toggleClass("activated", data.enemy_right == 1);
         $("#leftsensor").text(data.enemy_left + " Leftsensor ");
-        $("#capacity").text(data.capacity + "% of Power");
+        $("#leftsensor").toggleClass("activated", data.enemy_left == 1);
+        $("#capacity").text(data.capacity + "% power");
         $("#charge").css("width", data.capacity + "%");
         // variable 'data' does not exist after this
     });
