@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
   <head>
   <!-- disable page zooming on phones -->
@@ -12,27 +12,38 @@
     <title>Robot Controls</title>
     </head>
  <body>
-	<h1>My Robot</h1>
-	<div id="button">
-	<img src="http://192.168.12.5:8080/?action=stream" height="320" width="600"> 
-        <button id="left" ontouchstart = "$.get('/left');" ontouchend = "$.get('/stop');">Go Left</button>
-	   <button id ="right" ontouchstart = "$.get('/right');" ontouchend = "$.get('/stop');">Go Right</button> 
-	    <button id = "go" ontouchstart = "$.get('/go');" ontouchend ="$.get('/stop');">GO</button> 
-	    <button id ="back" ontouchstart = "$.get('/back');" ontouchend ="$.get('/stop');">Back</button>
-	    
+   
 	    <table style="width:100%">
-	<th>My Robot Status</th>
+	<td>My Robot Status</td>
+	<tr>
 	<td><div id="batterystats"></div></td>
+	<tr>
         <td><div id="voltage"></div></td>
-        <td><div id = "rightsensor"></div></td>
-        <td><div id = "leftsensor"></div></td>
+        <tr>
+<tr>
 </table>
-  <div id="battery">
-    <div id="charge">
-    <div id = "capacity"></div>
+
+	<div id="button-background">
+	
+	    <div id="button">
+	    <svg id = "circle" height="100" width="100">
+  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3"/>
+</svg>
+<svg id = "circle2" height="100" width="100">
+  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3"/>
+</svg>
+            <button id="left" ontouchstart = "$.get('/left');" ontouchend = "$.get('/stop');">Go Left</button>
+	        <button id ="right" ontouchstart = "$.get('/right');" ontouchend = "$.get('/stop');">Go Right</button> 
+	        <button id = "go" ontouchstart = "$.get('/go');" ontouchend ="$.get('/stop');">GO</button> 
+	        <button id ="back" ontouchstart = "$.get('/back');" ontouchend ="$.get('/stop');">Back</button>
+        </div>
     </div>
-  </div>
-</div>
+	
+	<!--img src="http://192.168.12.5:8080/?action=stream" height="320" width="600"-->
+    <div>
+    <div id="battery">
+        <div id="charge">
+            <div id = "capacity"></div>
+ </div>
 
 </html> 
-
