@@ -1,27 +1,42 @@
 body {
-    background-color: lightblue;
     font-family: "Times New Roman", Times, serif;
     -webkit-user-select: none;  
     -moz-user-select: none;     
     -ms-user-select: none;      
     -o-user-select: none;
      user-select: none;
+    background-image: url("/static/robot-04.jpg");
 }    
     h1 {
-    text-align: left;
+    text-align: center;
     color:blue;
     font-weight: bold;
     }
 
 img {
-    position: absolute;
     -webkit-user-select: none;  
     -moz-user-select: none;     
     -ms-user-select: none;      
     -o-user-select: none;
      user-select: none; 
-     top: 150px   
+     margin-left:100px;
+     margin-right:auto;
     }
+    
+#button-background {
+    background: url('http://192.168.12.5:8080/?action=stream') no-repeat center center;
+    min-height: 320px;
+    position:relative;
+    top:100px;
+}
+
+#button {
+    margin: 0 auto;
+    width: 320px;
+    height: 240px;
+    position: relative;
+}
+
 button {
     position: absolute;
     background: #3498db;
@@ -49,27 +64,26 @@ button {
 }
 
 #left { 
-    left: 10px;
-    top: 280px;
+    left: -150px;
+    top: 124px;
     }
 #right {
-    left: 480px;
-    top: 280px;
+    right: -154px;
+    top: 124px;
     }
     
 #go {
-    left: 270px;
-    top: 160px;
+    left: 105px;
+    top: 5px;
     }
  
 #back {
-    left: 270px;
-    top: 410px;
+    left: 106px;
+    top: 264px;
     }
 
 #batterystats {
     color:blue;
-    background-color:orange;
     }
 #voltage {
     color: green
@@ -77,34 +91,33 @@ button {
     
     }
 #rightsensor.activated {
-   color:yellow; 
-   background-color:red;
+   color:red;
     }
 #leftsensor.activated {
     color: orange;
-    background-color:red;
     }
 #capacity {
     color: red;
     background-color:white;
     }
-  
-table, td, th {
-    background-color:lightblue;    
-    border: 1px solid #ddd;
-    padding: 30px;
-    text-align: center;
-    position:left;
-    font-size: 110%;
-    }
+    
+#rightsensor {
+position:absolute;
+   right:360px;
+   top:80px; 
+   }
 
 table {
-    border-collapse: collapse;
-    width: 70%;
+    text-align: left;
+    font-size: 110%;
+    left:0px;
+    top:0px;
+    padding: 30px;
+    position:absolute;
+    
 }
 
 th, td {
-    padding: 15px;
 }
 
 
@@ -124,4 +137,49 @@ th, td {
   background: white;
   height: 100%;
 }
+#left2 { 
+    left: 65px;
+    top: 504px;
+    }
+#right2 {
+    right: 770px;
+    top: 504px;
+    }
+    
+#go2 {
+    left: 326px;
+    top: 422px;
+    }
+ 
+#back2 {
+    left: 326px;
+    top: 641px;
+    }
+#new {
+    margin: 0 auto;
+    position: relative;
+    }
+#circle {
+        right:370px;
+        position:absolute;
+        top:30px;
+        }
+#circle circle {
+   fill: lightblue;
+}
+#circle.activated circle {
+    fill:red;
+    }
+
+#circle2 {
+        left:370px;
+        position:absolute;
+        top:30px;
+        }
+#circle2 circle {
+   fill: lightblue;
+}
+#circle2.activated circle {
+    fill:red;
+    }
 
