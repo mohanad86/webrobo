@@ -49,9 +49,11 @@ setInterval(function(){
     $.getJSON('/batterycharge', function(data) {
         $("#batterystats").text(data.power/1000000 + " Watts ");
         $("#voltage").text(data.voltage/1000000 + " Voltage ");
-        $("#rightsensor").text(data.enemy_right + " Rightsensor ");
+        $("#rightsensor").text(data.enemy_right + " Right ");
         $("#rightsensor").toggleClass("activated", data.enemy_right == 1);
-        $("#leftsensor").text(data.enemy_left + " Leftsensor ");
+        $("#circle").toggleClass("activated", data.enemy_right == 1);
+               $("#circle2").toggleClass("activated", data.enemy_right == 1);
+        $("#leftsensor").text(data.enemy_left + " Left ");
         $("#leftsensor").toggleClass("activated", data.enemy_left == 1);
         $("#capacity").text(data.capacity + "% power");
         $("#charge").css("width", data.capacity + "%");
@@ -59,8 +61,6 @@ setInterval(function(){
     });
 }, 3000); 
     
-var nua = navigator.userAgent;
-var is_android = ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 &&     nua.indexOf('AppleWebKit') > -1) && !(nua.indexOf('Chrome') > -1));
 //disable the text selection
 $.fn.extend({
     disableSelection: function() {
