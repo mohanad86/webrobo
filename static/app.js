@@ -49,17 +49,13 @@ setInterval(function(){
     $.getJSON('/batterycharge', function(data) {
         $("#batterystats").text(data.power/1000000 + " Watts ");
         $("#voltage").text(data.voltage/1000000 + " Voltage ");
-        $("#rightsensor").text(data.enemy_right + " Right ");
-        $("#rightsensor").toggleClass("activated", data.enemy_right == 1);
-        $("#circle").toggleClass("activated", data.enemy_right == 1);
-               $("#circle2").toggleClass("activated", data.enemy_right == 1);
-        $("#leftsensor").text(data.enemy_left + " Left ");
-        $("#leftsensor").toggleClass("activated", data.enemy_left == 1);
+        $("#circleleft").toggleClass("activated", data.enemy_left == 1);
+        $("#circleright").toggleClass("activated", data.enemy_right == 1);
         $("#capacity").text(data.capacity + "% power");
         $("#charge").css("width", data.capacity + "%");
         // variable 'data' does not exist after this
     });
-}, 3000); 
+}, 1000); 
     
 //disable the text selection
 $.fn.extend({
