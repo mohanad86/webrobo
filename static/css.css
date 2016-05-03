@@ -60,7 +60,6 @@ button {
     -ms-user-select: none;      
     -o-user-select: none;
      user-select: none;
-    
 }
 
 #left { 
@@ -83,44 +82,24 @@ button {
     }
 
 #batterystats {
-    color:blue;
+     background:lightblue;
+     position:absolute;
+     top:50px;
+     font-weight: bold;
+     color: blue;
+     right:0px;
     }
 #voltage {
-    color: green
+    color: green;
     background-color:white;
-    
-    }
-#rightsensor.activated {
-   color:red;
-    }
-#leftsensor.activated {
-    color: orange;
+    position:absolute;
+    top:70px;
+    right:0px;
     }
 #capacity {
     color: red;
     background-color:white;
     }
-    
-#rightsensor {
-position:absolute;
-   right:360px;
-   top:80px; 
-   }
-
-table {
-    text-align: left;
-    font-size: 110%;
-    left:0px;
-    top:0px;
-    padding: 30px;
-    position:absolute;
-    
-}
-
-th, td {
-}
-
-
 #battery {
   border: 2px solid white;
   background: black;
@@ -130,8 +109,9 @@ th, td {
   width: 200px;
   height: 20px;
   padding: 2px;
+  position:absolute;
+  top:-90px;
 }
-
 #charge {
   width: 70%;
   background: white;
@@ -159,27 +139,26 @@ th, td {
     margin: 0 auto;
     position: relative;
     }
-#circle {
+#circleleft {
         right:370px;
         position:absolute;
         top:30px;
         }
-#circle circle {
+#circleleft circle {
    fill: lightblue;
 }
-#circle.activated circle {
+#circleleft.activated circle {
     fill:red;
     }
 
-#circle2 {
+#circleright {
         left:370px;
         position:absolute;
         top:30px;
         }
-#circle2 circle {
+#circleright circle {
    fill: lightblue;
 }
-#circle2.activated circle {
+#circleright.activated circle {
     fill:red;
     }
-
