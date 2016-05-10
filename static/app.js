@@ -46,7 +46,7 @@ $('button').click(function () {
 });
 //calling the function of the battery status
 setInterval(function(){ 
-    $.getJSON('/batterycharge', function(data) {
+    $.getJSON('/batterystatus', function(data) {
         $("#batterystats").text(data.power/1000000 + " Watts ");
         $("#voltage").text(data.voltage/1000000 + " Voltage ");
         $("#circleleft").toggleClass("activated", data.enemy_left == 1);
@@ -101,6 +101,3 @@ $("html").keyup(function(e) {
     e.preventDefault(); // Prevent page from scrolling
     return false;
 });
-
-
-  
