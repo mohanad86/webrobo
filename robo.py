@@ -46,8 +46,8 @@ app = Flask(__name__ )
 @app.route('/camera')
 def index():
     cap = cv2.VideoCapture(0)
-    cap.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH,640);
-    cap.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT,480);
+    cap.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH,320);
+    cap.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT,240);
     def camera():
         while True:
             rval, frame = cap.read()
@@ -55,7 +55,7 @@ def index():
             yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n' 
     return Response(camera(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route("/batterycharge")
+@app.route("/batterystatus")
 def battery():
     stats = {}
     for filename in os.listdir("/sys/power/axp_pmu/battery/"):
@@ -83,7 +83,7 @@ def robot():
     return app.send_static_file('robot.html')
 
 @app.route("/left")
-def command():
+def left():
     left.speed = 1
     r2.speed = -1
     return "ok"
@@ -94,7 +94,7 @@ def stop():
     return "ok"
 
 @app.route("/go")
-def go():
+def forward():
     left.speed = 1
     r2.speed = 1
     return "ok"
@@ -109,7 +109,6 @@ def back():
     left.speed = -1
     r2.speed = -1
     return "ok"
-
 
 if __name__ == '__main__':
     app.run(host = "0.0.0.0", debug = True, threaded = True)
