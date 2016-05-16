@@ -4,6 +4,7 @@ from threading import Thread
 from flask import Flask, render_template, Response
 import cv2
 import json
+import NetworkManager
 for pin  in range(192,196):
     try:
         with open("/sys/class/gpio/export", "w") as fh:
@@ -54,6 +55,15 @@ def index():
             ret, jpeg = cv2.imencode('.jpg', frame, (cv2.IMWRITE_JPEG_QUALITY, 20))
             yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n' 
     return Response(camera(), mimetype='multipart/x-mixed-replace; boundary=frame')
+@app.route("/api/wireless")
+def wireless():
+    networks = []
+    for dev in NetworkManager.NetworkManager.GetDevices():
+        if dev.DeviceType != NetworkManager.NM_DEVICE_TYPE_WIFI:
+            continue
+    for ap in dev.SpecificDevice().GetAccessPoints():
+        networks.append({"ssid":ap.Ssid, "freq":ap.Frequency, "strength":ord(ap.Strength)})
+    return json.dumps(networks)
 
 @app.route("/batterystatus")
 def battery():
@@ -83,7 +93,7 @@ def robot():
     return app.send_static_file('robot.html')
 
 @app.route("/left")
-def left():
+def command():
     left.speed = 1
     r2.speed = -1
     return "ok"
@@ -94,7 +104,7 @@ def stop():
     return "ok"
 
 @app.route("/go")
-def forward():
+def go():
     left.speed = 1
     r2.speed = 1
     return "ok"
