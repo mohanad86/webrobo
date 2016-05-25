@@ -4,7 +4,6 @@ body {
     -moz-user-select: none;     
     -ms-user-select: none;      
     -o-user-select: none;
-     user-select: none;
     background-image: url("/static/robot-04.jpg");
 }    
     h1 {
@@ -18,33 +17,23 @@ img {
     -moz-user-select: none;     
     -ms-user-select: none;      
     -o-user-select: none;
-     user-select: none; 
      margin-left:100px;
      margin-right:auto;
     }
     
 #button-background {
+    /*set the background video stream*/
     background: url('http://192.168.12.5:8080/?action=stream') no-repeat center center;
     min-height: 320px;
     position:relative;
     top:100px;
+    -webkit-user-select: none;
 }
 
-#button {
-    margin: 0 auto;
-    width: 320px;
-    height: 240px;
-    position: relative;
-}
 
 button {
     position: absolute;
     background: #3498db;
-    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-    background-image: -o-linear-gradient(top, #3498db, #2980b9);
-    background-image: linear-gradient(to bottom, #3498db, #2980b9);
     color: white;
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
@@ -54,12 +43,10 @@ button {
     padding: 15px 20px 10px 20px;
     text-decoration: none;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -webkit-user-select: none;  
     -moz-user-select: none;     
     -ms-user-select: none;      
     -o-user-select: none;
-     user-select: none;
+    -webkit-user-select: none;
 }
 
 #left { 
