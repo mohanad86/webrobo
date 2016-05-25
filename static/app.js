@@ -18,32 +18,16 @@ function removeMobileOnclick() {
         document.querySelector('.mobile-head-bar-left').onclick  = '';
     }
 }
-//this will work for every phone
-function isMobile() {
-    if (navigator.userAgent.match(/Android/i)
-            || navigator.userAgent.match(/iPhone/i)
-            || navigator.userAgent.match(/iPad/i)
-            || navigator.userAgent.match(/iPod/i)
-            || navigator.userAgent.match(/BlackBerry/i)
-            || navigator.userAgent.match(/Windows Phone/i)
-            || navigator.userAgent.match(/Opera Mini/i)
-            || navigator.userAgent.match(/IEMobile/i)
-            ) {
-        return true;
-    }
-}
-window.addEventListener('load', removeMobileOnclick);
 
+//working with phones when the touch start and the when the touch end 
+window.addEventListener('load', removeMobileOnclick);
 $('button').bind('touchstart', function(){
     $(this).addClass('button');
 }).bind('touchend', function(){
     $(this).removeClass('button');
 });
 
-$('button').click(function () {
-  $(this).css('button', '1px solid blue');
-  $('button#red').css('button', '1px solid white');
-});
+
 //calling the function of the battery status
 setInterval(function(){ 
     $.getJSON('/batterystatus', function(data) {
@@ -72,26 +56,27 @@ $.fn.extend({
     }
 });
 
-
+//for computer controls 
 $("html").keydown(function(e) {
     e.preventDefault();
     switch (e.keyCode) {
         case 37:
             $.get('/left');
-            console.info("Pressed left?");
+            //console.info("Pressed Left");
             break
         case 39:
-			$.get("/right");
-            console.info("Pressed right");
+	$.get("/right");
+            //console.info("Pressed Right");
             break;
         case 38:
             $.get("/go");
+            //console.info("Pressed Go");
             break;
          case 40:
             $.get("/back");
         default:
-        		$("#msg").html("Pressed unknown button");
-            console.info("User pressed uknown button with keycode:", e.keyCode);
+        		$("#msg").html("Pressed back button");
+            //console.info("User Pressed back button:", e.keyCode);
     }
     return false;
 });
@@ -101,3 +86,14 @@ $("html").keyup(function(e) {
     e.preventDefault(); // Prevent page from scrolling
     return false;
 });
+
+//calling the network interfaces
+window.networkUpdates = setInterval(function(){ 
+    $.getJSON('/api/wireless', function(data) {
+        $("#networks").empty();
+        $.each(data, function(i, e) {
+        //console.info("appending:", e); View the networks interfaces in the console
+        $("#networks").append("<option>" + e.ssid + "</option>");
+        });
+    });
+}, 3000); 
