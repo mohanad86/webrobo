@@ -23,19 +23,19 @@ $ sudo apt-get install gedit
 ```
 #Follow this instructions to clone to my Repo
 - Clone to the my repository from terminal
-``` 
+```sh 
 $ git clone https://github.com/mohanad86/webrobo
 $ git pull 
-- You will pull the python codes in your PC
-$ ls
--To showing you the list location of the file webrobo
 $ cd webrobo
-- Then you are in :)
 ``` 
+- Then you are in :)
 Interesting about old web interfaces 
-*[https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-18-14-17-35.png]
-*[https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-18-19-24-58.png] 
-*[https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-16-04-50-56.png]
+
+*[First interface](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-18-14-17-35.png)
+
+*[Second interface](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-18-19-24-58.png) 
+
+*[Third interface](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-16-04-50-56.png)
 
     Author: Mohanad Aly 
 
