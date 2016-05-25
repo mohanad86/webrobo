@@ -28,7 +28,8 @@ $ git clone https://github.com/mohanad86/webrobo
 $ git pull 
 $ cd webrobo
 ``` 
-- Then you are in :)
+Then you are in :)
+
 Interesting about old web interfaces 
 
 * [First interface](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-18-14-17-35.png)
