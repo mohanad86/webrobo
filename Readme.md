@@ -9,7 +9,7 @@
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot%20from%202016-05-25%2011-27-55.jpg)
 
 
-### If you are using Unbntu platform
+### If you are using Ubuntu platform
  
 - Install python withing the follow commands.
 - Install git into you Machine to pull and push from the server.
