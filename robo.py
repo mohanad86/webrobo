@@ -77,7 +77,7 @@ def wireless():
 @app.route("/batterystatus")
 def battery():
     stats = {}
-	#open the file battery to get the information about the battery
+	#Open the file battery to get the information about the battery
     for filename in os.listdir("/sys/power/axp_pmu/battery/"):
         with open ("/sys/power/axp_pmu/battery/" + filename) as fh:
             stats[filename] = int(fh.read())
@@ -134,7 +134,23 @@ def back():
     right.speed = -1
     return "back"
     
-#if any error happened use (debug = True)
-
+#Chaning the port and host and the debug from the command line 
 if __name__ == '__main__':
-    app.run(host = "0.0.0.0", threaded = True)
+    parser = optparse.OptionParser()
+    parser.add_option("-H", "--host",
+        help="Bind to address, default to all interfaces",
+        default="0.0.0.0")
+    parser.add_option("-P", "--port",
+        type=int,
+        help="Listen on this port, default to 5000",
+        default=5000)
+    parser.add_option("-d", "--debug",
+        action="store_true", dest="debug",
+        help=optparse.SUPPRESS_HELP)
+    options, _ = parser.parse_args()
+
+    app.run(
+        debug=options.debug,
+        host=options.host,
+        port=options.port
+    )
