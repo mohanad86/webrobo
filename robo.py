@@ -8,14 +8,6 @@ import cv2
 import json
 import NetworkManager
 
-for pin  in range(192,196):		 
-       try:		
-          with open("/sys/class/gpio/export", "w") as fh:		
-              fh.write(str(pin))		
-      except IOError:		
-          pass		
-      with open("/sys/class/gpio/gpio%d/direction" % pin, "w") as fh:		
-          fh.write("in")
 
 class MotorThread(Thread):
     def __init__(self, pin=192):
@@ -40,7 +32,17 @@ class MotorThread(Thread):
                 sleep(0.018 if self.speed > 0 else 0.019)
             else:
                 sleep(0.020)
-
+                
+class SensorThread(Thread):
+    def __init__(self, pin =192):                                
+        for pin  in range(192,196):		 
+         try:		
+           with open("/sys/class/gpio/export", "w") as fh:		
+               fh.write(str(pin))		
+         except IOError:		
+             pass		
+             with open("/sys/class/gpio/gpio%d/direction" % pin, "w") as fh:		
+                                fh.write("in")
 
 left = MotorThread(202)
 left.start()
