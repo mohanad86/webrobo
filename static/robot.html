@@ -2,7 +2,7 @@
 <html>
   <head>
   <!-- disable page zooming on phones -->
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, width =640">
   <!--when you want to requst the file from the internet use this>
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script-->
   <script src ="/static/jquery-1.12.3.min.js"></script>
@@ -11,8 +11,10 @@
     <link type="text/css" rel="stylesheet" href="css.css"/>
     <title>Robot Controls</title>
     </head>
- <body>
-    <div> 
+  <body>
+    <div>
+    <select id="networks" onChange="$.post('/api/wireless?id=5');">
+    </select>
 	<div id="button-background">
 	    <div id="button">
 	    <svg id = "circleleft" height="100" width="100">
@@ -30,9 +32,4 @@
             <div id="battery">
             <div id="charge">
             <div id = "capacity"></div>
-            </div>   
-           <div id ="batterystats"></div>
-           <div id="voltage"></div>
- </div>
-
-</html> 
+       
