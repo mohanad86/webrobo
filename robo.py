@@ -5,9 +5,13 @@ from flask import Flask
 from flask import render_template
 from flask import Response
 import cv2
+import ConfigParser
 import json
 import NetworkManager
-
+config = ConfigParser.ConfigParser()
+config.readfp(open('/etc/sumochip/sumochip.conf'))
+#this for self check
+#print("sanity check")
 
 class MotorThread(Thread):
     def __init__(self, pin=192):
@@ -43,14 +47,60 @@ class SensorThread(Thread):
              pass		
              with open("/sys/class/gpio/gpio%d/direction" % pin, "w") as fh:		
                                 fh.write("in")
+class LightStrip(Thread):
+    def __init__(self):                                
+        for pin  in range(192,197): 
+            try:
+                with open("/sys/class/gpio/export", "w") as fh:
+                    fh.write(str(pin))
+            except IOError:
+                 pass
+            with open("/sys/class/gpio/gpio%d/direction" % pin, "w") as fh:
+                fh.write("out")
 
-left = MotorThread(202)
+
+    def on(self, pin):
+        with open("/sys/class/gpio/gpio%d/value" % pin, "w") as fh:
+            fh.write("0")
+
+    def off(self, pin):
+        with open("/sys/class/gpio/gpio%d/value" % pin, "w") as fh:
+            fh.write("1")
+
+strip = LightStrip()
+left = MotorThread(config.getint('pins', 'motor left'))
 left.start()
-right = MotorThread(196)
+right = MotorThread(config.getint('pins', 'motor right'))
 right.start()
+# Old function 
+#left = MotorThread(202)
+#left.start()
+#right = MotorThread(196)
+#right.start()
 
 app = Flask(__name__ )
 
+@app.route("/light")
+def light():
+    strip.on(193)
+    sleep(1)
+    strip.off(193)
+    return "light"
+    
+@app.route("/light2")
+def light2():
+    strip.on(196)
+    sleep(1)
+    strip.off(196)
+    return "light2"
+
+@app.route("/light3")
+def light3():
+    strip.on(192)
+    sleep(1)
+    strip.off(192)
+    return "light3"
+    
 @app.route('/camera')
 def index():
     cap = cv2.VideoCapture(0)
