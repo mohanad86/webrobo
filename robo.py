@@ -112,17 +112,22 @@ def index():
             ret, jpeg = cv2.imencode('.jpg', frame, (cv2.IMWRITE_JPEG_QUALITY, 20))
             yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n' 
     return Response(camera(), mimetype='multipart/x-mixed-replace; boundary=frame')
-@app.route("/api/wireless")
-
+    
+@app.route("/api/wireless", methods=['GET', 'POST'])
 def wireless():
-    networks = []
-	#Getting the information about the network
-    for dev in NetworkManager.NetworkManager.GetDevices():
-        if dev.DeviceType != NetworkManager.NM_DEVICE_TYPE_WIFI:
-            continue
-    for ap in dev.SpecificDevice().GetAccessPoints():
-        networks.append({"ssid":ap.Ssid, "freq":ap.Frequency, "strength":ord(ap.Strength)})
-    return json.dumps(networks)
+    if request.method == 'POST':
+        networks = request.form['networks'];
+        password = request.form['password'];
+           #  print (request.form)
+        return json.dumps({'status':'OK','networks':networks,'pass':password});
+    else:
+        networks = set()
+        for dev in NetworkManager.NetworkManager.GetDevices():
+            if dev.DeviceType != NetworkManager.NM_DEVICE_TYPE_WIFI:
+                 continue
+            for ap in dev.SpecificDevice().GetAccessPoints():
+                networks.add(ap.Ssid)
+        return json.dumps({"networks":tuple(networks), "current":None})
 
 @app.route("/batterystatus")
 def battery():
