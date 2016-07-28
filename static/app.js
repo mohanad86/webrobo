@@ -13,14 +13,8 @@ function loadDoc() {
   xhttp.open("GET", "ajax_info.txt", true);
   xhttp.send();
 }
-function removeMobileOnclick() {
-    if(isMobile()) {
-        document.querySelector('.mobile-head-bar-left').onclick  = '';
-    }
-}
 
 //working with phones when the touch start and the when the touch end 
-window.addEventListener('load', removeMobileOnclick);
 $('button').bind('touchstart', function(){
     $(this).addClass('button');
 }).bind('touchend', function(){
@@ -87,13 +81,17 @@ $("html").keyup(function(e) {
     return false;
 });
 
-//calling the network interfaces
-window.networkUpdates = setInterval(function(){ 
-    $.getJSON('/api/wireless', function(data) {
+
+$(document).ready(function() {
+  console.info("Page is ready");
+  $("#network-refresh").on("click", function(event) { 
+        console.info("Refresh pressed");
+        $.getJSON('/api/wireless', function(data) {
         $("#networks").empty();
-        $.each(data, function(i, e) {
-        //console.info("appending:", e); View the networks interfaces in the console
-        $("#networks").append("<option>" + e.ssid + "</option>");
+        $.each(data.networks, function(i, e) {
+        $("#networks").append("<option>" + e + "</option>");
         });
     });
-}, 3000); 
+  });
+});
+
