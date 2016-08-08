@@ -4,6 +4,7 @@ body {
     -moz-user-select: none;     
     -ms-user-select: none;      
     -o-user-select: none;
+     user-select: none;
     background-image: url("/static/robot-04.jpg");
 }    
     h1 {
@@ -17,23 +18,33 @@ img {
     -moz-user-select: none;     
     -ms-user-select: none;      
     -o-user-select: none;
+     user-select: none; 
      margin-left:100px;
      margin-right:auto;
     }
     
 #button-background {
-    /*set the background video stream*/
     background: url('http://192.168.12.5:8080/?action=stream') no-repeat center center;
     min-height: 320px;
     position:relative;
     top:100px;
-    -webkit-user-select: none;
 }
 
+#button {
+    margin: 0 auto;
+    width: 320px;
+    height: 240px;
+    position: relative;
+}
 
 button {
     position: absolute;
     background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
     color: white;
     -webkit-border-radius: 28;
     -moz-border-radius: 28;
@@ -43,10 +54,12 @@ button {
     padding: 15px 20px 10px 20px;
     text-decoration: none;
     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-user-select: none;  
     -moz-user-select: none;     
     -ms-user-select: none;      
     -o-user-select: none;
-    -webkit-user-select: none;
+     user-select: none;
 }
 
 #left { 
@@ -149,3 +162,30 @@ button {
 #circleright.activated circle {
     fill:red;
     }
+    
+input[type="button"], input[type="submit"]
+{
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;      
+    -o-user-select: none;
+    user-select: none;
+    background-color: #a3d4ff;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#a3d4ff), to(#88bcf2));
+    background-image: -webkit-linear-gradient(top, #a3d4ff, #88bcf2);
+    background-image:    -moz-linear-gradient(top, #a3d4ff, #88bcf2);
+    background-image:      -o-linear-gradient(top, #a3d4ff, #88bcf2);
+    background-image:         linear-gradient(to bottom, #a3d4ff, #88bcf2);
+    border-radius:3px;
+    display: inline-block;
+    line-height: 22px;
+    padding:7px 12px;
+    margin:0;
+    border: 1px solid #88bcf2; 
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    text-shadow: 0 1px 1px #70A7E0;
+    cursor:pointer;
+}​  
