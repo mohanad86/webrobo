@@ -83,9 +83,9 @@ $("html").keyup(function(e) {
 
 
 $(document).ready(function() {
-  console.info("Page is ready");
+//  console.info("Page is ready");
   $("#network-refresh").on("click", function(event) { 
-        console.info("Refresh pressed");
+ //       console.info("Refresh pressed");
         $.getJSON('/api/wireless', function(data) {
         $("#networks").empty();
         $.each(data.networks, function(i, e) {
