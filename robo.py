@@ -200,10 +200,13 @@ def wireless():
 @app.route("/batterystatus")
 def battery():
     stats = {}
+    axp = AXP209()
+    stats['capacity'] = axp.battery_gauge 
+    stats['voltage'] = axp.battery_voltage
     #open the file battery to get the information about the battery
-    for filename in os.listdir("/sys/power/axp_pmu/battery/"):
-        with open ("/sys/power/axp_pmu/battery/" + filename) as fh:
-            stats[filename] = int(fh.read())
+    #for filename in os.listdir("/sys/power/axp_pmu/battery/"):
+        #with open ("/sys/power/axp_pmu/battery/" + filename) as fh:
+            #stats[filename] = int(fh.read())
             #r means read the values which is coming from the files 
     with open("/sys/class/gpio/gpio200/value", "r") as fh:
         stats["enemy_left"] = int(fh.read())
