@@ -228,7 +228,10 @@ def lightall():
     strip.on(195)
     strip.on(194)
     strip.on(196)
-    sleep(10)
+    return "lightall"
+    
+@app.route("/lightalloff")    
+def lightalloff():
     strip.off(197)
     strip.off(199)
     strip.off(193)
@@ -237,63 +240,63 @@ def lightall():
     strip.off(195)
     strip.off(194)
     strip.off(196)
-    return "light"
+    return "lightalloff"
 
 @app.route("/light1")
 def light1():
     strip.on(197)
     sleep(1)
     strip.off(197)
-    return "light"
+    return "light1"
     
 @app.route("/light2")
 def light2():
     strip.on(199)
     sleep(1)
     strip.off(199)
-    return "light"
+    return "light2"
 
 @app.route("/light3")
 def light3():
     strip.on(193)
     sleep(1)
     strip.off(193)
-    return "light"
+    return "light3"
 
 @app.route("/light4")
 def light4():
     strip.on(192)
     sleep(1)
     strip.off(192)
-    return "light"
+    return "light4"
     
 @app.route("/light5")
 def light5():
     strip.on(198)
     sleep(1)
     strip.off(198)
-    return "light"
+    return "light5"
     
 @app.route("/light6")
 def light6():
     strip.on(195)
     sleep(1)
     strip.off(195)
-    return "light"
+    return "light6"
     
 @app.route("/light7")
 def light7():
     strip.on(194)
     sleep(1)
     strip.off(194)
-    return "light"
+    return "light7"
     
 @app.route("/light8")
 def light8():
     strip.on(196)
     sleep(1)
     strip.off(196)
-    return "light"  
+    return "light8"  
 
 @app.route("/reds")
 def lightred():
@@ -301,12 +304,15 @@ def lightred():
     strip.on(195)
     strip.on(194)
     strip.on(196)
-    sleep(5)
+    return "reds"
+    
+@app.route("/redsoff")
+def lightredoff():
     strip.off(198)
     strip.off(195)
     strip.off(194)
     strip.off(196)
-    return "light"
+    return "lightredoff"
 
 @app.route("/blues")
 def lightblue():
@@ -314,12 +320,15 @@ def lightblue():
     strip.on(199)
     strip.on(193)
     strip.on(192)
-    sleep(5)
+    return "blues"
+    
+@app.route("/bluesoff")
+def bluesoff():    
     strip.off(197)
     strip.off(199)
     strip.off(193)
     strip.off(192)
-    return "light"
+    return "bluesoff"
 
 @app.route("/css.css")
 def css():
