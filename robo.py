@@ -230,7 +230,7 @@ def lightall():
     strip.on(196)
     return "lightall"
     
-@app.route("/lightalloff")    
+@app.route("/lightalloff")
 def lightalloff():
     strip.off(197)
     strip.off(199)
