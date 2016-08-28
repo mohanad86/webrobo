@@ -1,4 +1,4 @@
-# SumoRobot controls over the Web Browser 
+# SumoRobot (cubietruck) controls over the Web Browser 
 
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160418_192127.jpg)
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160418_192201.jpg)
