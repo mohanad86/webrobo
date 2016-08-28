@@ -29,13 +29,22 @@ $ cd webrobo
 ``` 
 Then you are in :)
 
-Interesting about old web interfaces 
+#Interesting about old web interfaces 
 
 * [First interface](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-18-14-17-35.png)
 
 * [Second interface](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-18-19-24-58.jpg) 
 
 * [Third interface](https://github.com/mohanad86/webrobo/blob/master/images/Screenshot_2016-04-16-04-50-56.png)
+
+#If you're interested to see how it works
+
+* [Robot demo](https://www.youtube.com/watch?v=mJhIETEOKiQ)
+
+* [Small artificial intelligence with the Robot (cubietruck chip)](https://www.youtube.com/watch?v=UfGA6fSdwqc) 
+ 
+ 
+
 
     Author: Mohanad Aly 
 
