@@ -8,8 +8,10 @@ import json
 import NetworkManager
 import os
 import optparse
-from time import sleep
+from collections import deque
+from time import time, sleep
 from threading import Thread
+from axp209 import AXP209
 config = ConfigParser.ConfigParser()
 config.readfp(open('/etc/sumochip/sumochip.conf'))
 
@@ -47,8 +49,8 @@ class SensorThread(Thread):
         self.daemon = True
         self.sensor_pins = {#'line_left':193,
                             #'line_right':194,
-                            'enemy_left':200,
-                            'enemy_right':203}
+                            'enemy_left':203,
+                            'enemy_right':200}
         self.sensor_fhs = {}
         self.sensor_values = {}
         for pin_name, pin in self.sensor_pins.items(): 
@@ -109,15 +111,17 @@ class AI(Thread):
         self.right = right_motor
         self.sensors = sensors
         self.lights = lights
+        self.stopped = True
 
     def run(self):
         while True:
+         if self.stopped == False:
             if self.sensors.enemy_left:
                 self.blues_on()
                 self.left.speed = 1
             else:
                 self.blues_off()
-                self.left.speed = 0    
+                self.left.speed = 0
             
             if self.sensors.enemy_right:
                 self.reds_on()
@@ -125,7 +129,12 @@ class AI(Thread):
             else:
                 self.reds_off()
                 self.right.speed = 0
-                sleep(0.1) 
+                sleep(0.1)
+         else:
+              sleep(0.5)      
+                
+    def stop(self):
+        self.stopped = False             
                 
     def reds_on(self):
         self.lights.on(198)
@@ -147,7 +156,8 @@ class AI(Thread):
         self.lights.off(197)
         self.lights.off(199)
         self.lights.off(193)
-        self.lights.off(192)                                              
+        self.lights.off(192)
+          
           
 strip = LightStrip()
 
@@ -162,6 +172,7 @@ right = MotorThread(config.getint('pins', 'motor right'))
 right.start()
 
 ai = AI(left, right, sensors, strip)
+ai.start()
 #left = MotorThread(202)
 #left.start()
 #right = MotorThread(196)
@@ -178,7 +189,7 @@ def index():
         while True:
             rval, frame = cap.read()
             ret, jpeg = cv2.imencode('.jpg', frame, (cv2.IMWRITE_JPEG_QUALITY, 20))
-            yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n' 
+            yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + jpeg.tostring() + b'\r\n\r\n'
     return Response(camera(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route("/api/wireless", methods=['GET', 'POST'])
@@ -208,13 +219,13 @@ def battery():
         #with open ("/sys/power/axp_pmu/battery/" + filename) as fh:
             #stats[filename] = int(fh.read())
             #r means read the values which is coming from the files 
-    with open("/sys/class/gpio/gpio200/value", "r") as fh:
+    with open("/sys/class/gpio/gpio203/value", "r") as fh:
         stats["enemy_left"] = int(fh.read())
     with open("/sys/class/gpio/gpio193/value", "r") as fh:
         stats["line_left"] = int(fh.read())
     with open("/sys/class/gpio/gpio194/value", "r") as fh:
         stats["line_right"] = int(fh.read())
-    with open("/sys/class/gpio/gpio203/value", "r") as fh:
+    with open("/sys/class/gpio/gpio200/value", "r") as fh:
         stats["enemy_right"] = int(fh.read())
     return json.dumps(stats)
     
@@ -230,7 +241,7 @@ def lightall():
     strip.on(196)
     return "lightall"
     
-@app.route("/lightalloff")
+@app.route("/lightalloff")    
 def lightalloff():
     strip.off(197)
     strip.off(199)
@@ -371,11 +382,16 @@ def back():
     left.speed = -1
     right.speed = -1
     return "back"
-
+    
 @app.route("/aion")
 def A():
-    ai.start()
+    ai.stopped = False
     return "on"
+        
+@app.route("/aioff")
+def A2():
+    ai.stopped = True
+    return "off"
 
 
 if __name__ == '__main__':
@@ -393,8 +409,8 @@ if __name__ == '__main__':
     parser.add_option("-a", "--A", action = "store_true" , dest ="ai", help="Enable AI")    
     options, _ = parser.parse_args()
 
-  #  if options.ai:
-   #     ai.start()
+   # if options.ai:
+       # ai.start()
 
     app.run(
         debug=options.debug,
