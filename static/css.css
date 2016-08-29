@@ -5,7 +5,7 @@ body {
     -ms-user-select: none;      
     -o-user-select: none;
      user-select: none;
-    background-image: url("/static/robot-04.jpg");
+     background-image: url("/static/robots.jpg");
 }    
     h1 {
     text-align: center;
@@ -180,6 +180,13 @@ background-color: #ec0a2a;
 #network-refresh {
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
 }
+
+#ai{
+background-color: #4644d0;
+    color: white;
+    left: 442px;
+    top: 66px;
+    }
 #circleleft {
         right:370px;
         position:absolute;
