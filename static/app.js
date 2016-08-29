@@ -95,3 +95,10 @@ $(document).ready(function() {
   });
 });
 
+$(document).ready(function() {
+  $("#ai").on("click", function(event) { 
+  $.get('/aion', function(event) {
+});
+    });
+  });
+
