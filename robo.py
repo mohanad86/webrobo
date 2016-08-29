@@ -372,6 +372,12 @@ def back():
     right.speed = -1
     return "back"
 
+@app.route("/aion")
+def A():
+    ai.start()
+    return "on"
+
+
 if __name__ == '__main__':
     parser = optparse.OptionParser()
     parser.add_option("-H", "--host",
@@ -387,8 +393,8 @@ if __name__ == '__main__':
     parser.add_option("-a", "--A", action = "store_true" , dest ="ai", help="Enable AI")    
     options, _ = parser.parse_args()
 
-    if options.ai:
-        ai.start()
+  #  if options.ai:
+   #     ai.start()
 
     app.run(
         debug=options.debug,
