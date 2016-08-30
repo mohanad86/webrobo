@@ -101,7 +101,7 @@ class LightStrip():
     def off(self, pin):
         with open("/sys/class/gpio/gpio%d/value" % pin, "w") as fh:
             fh.write("1") 
-            
+                        
 class AI(Thread):
 
     def __init__(self, left_motor, right_motor, sensors, lights):
@@ -241,7 +241,7 @@ def lightall():
     strip.on(196)
     return "lightall"
     
-@app.route("/lightalloff")    
+@app.route("/lightalloff")
 def lightalloff():
     strip.off(197)
     strip.off(199)
