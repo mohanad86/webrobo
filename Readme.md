@@ -1,8 +1,6 @@
 # SumoRobot (cubietruck) controls over the Web Browser 
 
 
-
-#The new design for the Robot with the lights 
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160905_1907492.jpg)
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160905_1907542.jpg)
 ![alt text](https://github.com/mohanad86/webrobo/blob/master/images/20160905_1908032.jpg)
